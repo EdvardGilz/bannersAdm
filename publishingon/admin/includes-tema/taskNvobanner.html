@@ -1,0 +1,279 @@
+
+
+<!-- formualrio del editor -->
+
+  <form role="form" action="index.html">
+
+	<h3>Crear nuevo banner		 
+		<!-- Guardar o publicar el banner -->
+		<div class="btn-group pull-right" role="group">
+            <button type="submit" class="btn btn-default">Detener</button> 
+			<button type="submit" class="btn btn-default">Borrador</button>
+            <button type="submit" class="btn btn-info disabled">Modificar</button> 
+			<button type="submit" class="btn btn-success">Publicar / Programar</button> 
+		</div>
+	</h3>
+
+<hr />
+
+
+<!-- 3 columnas anidadas, para crear el banner y editar -->
+<div class="row">       
+        
+    <!-- Columna de datos de campaña y cliente -->
+    <div class="form-group col-xs-3">
+                
+      <!-- Datos cliente -->
+        
+      <label>Nombre:</label>
+        <input name="itemBanner" type="text" class="form-control" placeholder="Nombre">
+      
+      <label>Campaña:</label>
+        <input name="tagCampana" type="text" class="form-control" placeholder="Nombre">
+      
+      <label>Cliente:</label>      
+        <div class="input-group">
+          <input name="tagCliente" type="text" class="form-control" >
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+          </span>
+        </div>  
+        
+      <hr>  
+      
+      <!-- 2 columnas de Proyección -->
+    
+      <div class="row">
+          
+        <div class="form-group col-xs-6">
+            
+          <label>Impresiones:</label>          
+          <div class="input-group">
+            <input name="contarImpresion" type="number" class="form-control" placeholder="0">
+            <span class="input-group-btn">
+              <button class="btn btn-info disabled" type="button"><i class="glyphicon glyphicon-refresh"></i> reset</button>
+            </span>
+          </div>        
+              
+        </div>        
+        
+        <div class="form-group col-xs-6">
+            
+          <label>Clics:</label>
+          <div class="input-group">
+            <input name="contarClics" type="number" class="form-control" placeholder="0">
+            <span class="input-group-btn">
+              <button class="btn btn-info disabled" type="button"><i class="glyphicon glyphicon-refresh"></i> reset</button>
+            </span>
+          </div>
+            
+        </div>
+          
+      </div>     
+      
+    <!-- 2 columnas anidadas, para hora de inicio / final de publicación -->
+      <div class="row">       
+            
+        <!-- Fecha de publicación -->
+        <div class="form-group col-xs-6">
+          <label>Inicio campaña:</label>
+          <input name="fechaInicio" type="date" class="form-control" placeholder="DD/MM/AAAA">
+        </div>
+        
+        <!-- Hora de inicio -->
+        <div class="form-group col-xs-6">
+          <label>Hora inicio:</label>
+          <input name="horaFin" type="datetime" class="form-control" placeholder="HH:MM">
+        </div>
+        
+        <!-- Fin de publicación -->
+        <div class="form-group col-xs-6">
+          <label>Final campaña:</label>
+          <input name="fechaFin" type="date" class="form-control" placeholder="DD/MM/AAAA">
+        </div>
+        
+        <!-- Hora final -->
+        <div class="form-group col-xs-6">
+          <label>Hora final:</label>
+          <input name="horaFin" type="datetime" class="form-control" placeholder="HH:MM">
+        </div>    
+              
+            
+      </div>
+
+
+            
+    </div><!-- FIN Columna de datos de campaña y cliente -->
+
+    <!-- Columna de edición de banner -->
+    <div class="form-group col-xs-3" style="border-left:#ddd solid 1px;border-right:#ddd solid 1px;">
+
+
+        <!-- 2 columnas para mostrar la categoria y su tamaño -->
+            
+            <!-- Tipo de Banner -->
+            <div class="form-group">
+              <label>Tipo de banner:</label>
+              <select name="itemBannerCategoria" class="form-control">
+                <!--option value="none">Seleccionar</option-->
+                <option value="cat-00">DISPLAY UNIVERSAL AD PACKAGE (UAP)</option>
+                <!--option value="cat-01">DISPLAY RISING STARS</option>
+                <option value="cat-02">DISPLAY RICH MEDIA AD GUIDANCE</option>
+                <option value="cat-03">MOBILE RISING STARS</option>
+                <option value="cat-04">MOBILE IMAGE ADS</option>
+                <option value="cat-05">MOBILE RICH MEDIA ADS</option>
+                <option value="cat-06">PERSONALIZADO</option-->
+              </select> 
+            </div>
+            
+            <!-- Por tipo de banner, seleccionar algún tamaño -->
+            <div class="form-group">
+              <label>Tamaño:</label>
+              <select id="prevTamano" name="itemBannerTamano" class="form-control">         
+                <option value="none">Seleccionar</option>
+              <!-- UNIVERSAL AD PACKAGE (UAP) -->   
+                <option value="cat-00-ban-00" data-width="300" data-height="250">Medium Rectangle 300x250</option>
+                <option value="cat-00-ban-01" data-width="180" data-height="150">Rectangle 180x150</option>
+                <option value="cat-00-ban-02" data-width="160" data-height="600">Wide Skyscrape 160x600</option>
+                <option value="cat-00-ban-03" data-width="728" data-height="90">Leaderboard 728x90</option>
+                <option value="cat-00-ban-04" data-width="970" data-height="90">Super Leader board 970x90</option>
+                <option value="cat-00-ban-05" data-width="300" data-height="600">Half Page 300x600</option>
+                <option value="cat-00-ban-06" data-width="120" data-height="60">Button 2 120x60</option>
+                <option value="cat-00-ban-07" data-width="88" data-height="31">Micro Bar 88x31</option>
+              <!-- RISING STARS --XXX   
+                <option value="cat-01-ban-08">Billboard 970x250</option>
+                <option value="cat-01-ban-09">Filmstrip 300x600</option>
+                <option value="cat-01-ban-10">Portrait 300x1050</option>
+                <option value="cat-01-ban-11">Pushdown 970x90</option>
+                <option value="cat-01-ban-12">Sidekick 300x250</option>
+                <option value="cat-01-ban-13">Sidekick 300x600</option>
+                <option value="cat-01-ban-14">Sidekick 970x250</option>
+                <option value="cat-01-ban-15">Sidekick 300x250</option>
+                <option value="cat-01-ban-16">Slider CWx90</option>
+              <!-- RICH MEDIA AD GUIDANCE --XXX
+                <option value="cat-02-ban-17">In-Banner Video 300x250</option>
+                <option value="cat-02-ban-18">In-Banner Video 180x150</option>
+                <option value="cat-02-ban-19">In-Banner Video 160x600</option>
+                <option value="cat-02-ban-20">In-Banner Video 728x90</option>
+                <option value="cat-02-ban-21">In-Banner Video 300x600</option>
+                <option value="cat-02-ban-22">Expandable/Retractable 300x250 to 600x250</option>
+                <option value="cat-02-ban-23">Expandable/Retractable 180x150 to 600x150</option>
+                <option value="cat-02-ban-24">Expandable/Retractable 160x600 to 600x600</option>
+                <option value="cat-02-ban-25">Expandable/Retractable 300x600 to 600x600</option>
+                <option value="cat-02-ban-26">Expandable/Retractable 728x90 to 728x315</option>
+                <option value="cat-02-ban-27">Pop Ups 300x250</option>
+                <option value="cat-02-ban-28">Pop Ups 550x480</option>
+                <option value="cat-02-ban-29">Floating (custom size)</option>
+                <option value="cat-02-ban-30">Between-the-Page (aka "Interstitial")</option>
+              <!-- MOBILE RISING STARS --XXX 
+                <option value="cat-03-ban-31">Adhesion Banner 320x50</option>
+                <option value="cat-03-ban-32">Pull 320x50</option>
+                <option value="cat-03-ban-33">Slider 320x50</option>
+                <option value="cat-03-ban-34">Filmstrip (Tablet) 300x600</option>
+                <option value="cat-03-ban-35">Filmstrip Full Screen 320x50</option>
+                <option value="cat-03-ban-36">Full Page Flex (Interstitial or Inline) 320x50</option>
+              <!-- MOBILE IMAGE ADS --XXX 
+                <option value="cat-04-ban-37">Smartphone Static Banner 300x50</option>
+                <option value="cat-04-ban-38">Smartphone Static Wide Banner 320x50</option>
+                <option value="cat-04-ban-39">Smartphone Interstitial 300x250</option>
+                <option value="cat-04-ban-40">Feature phone Small Banner 120x20</option>
+                <option value="cat-04-ban-41">Feature phone Medium Banner 168x28</option>
+                <option value="cat-04-ban-42">Feature phone Large Banner 216x36</option>
+              <!-- MOBILE RICH MEDIA ADS --XXX
+                <option value="cat-05-ban-43">Smartphone Rich Interstitial 300x250</option>
+                <option value="cat-05-ban-43">Smartphone Rich Banner Expandable 300x50</option>
+                <option value="cat-05-ban-43">Smartphone Rich Wide Banner Expandable 320x50</option-->
+              </select> 
+            </div>
+                                        
+            <!-- Cargar imagen -->
+            <div class="form-group">
+              <label>Cargar imagen o medio:</label>
+
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            Buscar&hellip; <input name="itemBannerImage" type="file" style="display: none;" multiple>
+                        </span>
+                    </label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+              
+            </div>
+            
+            <!-- Url a la que direcciona -->
+            <div class="form-group">
+              <label>Dirección de enlace:</label>
+              <textarea id="prevUrl" name="itemBannerRedirect" class="form-control">http://www.google.com</textarea>
+            </div>
+            
+            <!-- mensaje a personalizar -->
+            <div class="form-group">
+              <label>Mensaje banner personalizado:</label>
+              <textarea id="prevTxt" name="itemBannerText" class="form-control"><h3>¿Qué esperas para comprar?</h3><p>pícale</p></textarea>
+            </div>
+             
+            <div class="row">
+            <!-- Color de texto -->
+            <div class="form-group col-xs-6">
+              <label>Color texto:</label>
+              <input id="prevColor" name="itemBannerColorText"  type="color" class="form-control" value="#21c0c4">
+            </div>
+                
+            <!-- Color de fondo -->
+            <div class="form-group col-xs-6">
+              <label>Color fondo:</label>
+              <input id="prevBGcolor" name="itemBannerColorBg" type="color" class="form-control">
+            </div>
+            </div>
+            
+            <div class="form-group">
+                <a id="previewAction" href="#previewAction" class="btn btn-warning btn-block">Preview</a>
+            </div>
+        
+    </div><!-- fin columna de edición -->
+    
+
+
+    <!-- columna de previsualización -->
+    <div class="col-xs-6">
+        <div id="previewBanner" style="width:100%;height:90px;background-color:#DDD;"><!-- Contenido al vuelo --></div>
+        <div id="previewCode" class="form-group"><!-- Contenido al vuelo --></div>
+    </div>
+    
+    
+</div>
+
+<!-- Fin de operación -->
+
+
+<hr />
+
+<!-- Muestreo de datos obtenidos -->
+<h3 >Resultados</h3>
+<hr />
+
+<!-- 3 columnas-->
+<div class="row">		
+	<!-- Asistencia -->
+		    <div class="form-group col-xs-4">
+		      <label for="numAsistencia">Clics registrados:</label>
+		      <h1>1000</h1>
+		    </div>
+	<!-- Asuntos registrados -->
+		    <div class="form-group col-xs-4">
+		      <label for="numAsuntosRegistro">Impresiones totales:</label>
+              <h1>1000</h1>
+		    </div>
+	<!-- Asuntos tratados -->
+		    <div class="form-group col-xs-4">
+		      <label for="numAsuntosTratado">Rendimiento:</label>
+              <h1>1000</h1>
+		    </div>
+</div><!-- FIN 3 columnas-->
+
+
+
+    
+  </form>
+  

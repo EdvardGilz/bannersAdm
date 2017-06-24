@@ -1,0 +1,167 @@
+/*
+ * Orden de Layout
+ * 0) Eliminamos el comportamiento responsivo (@import).
+ * 1) Los espacios para contar con un menu lateral
+ * 2) Elementos globales
+ * 2b) Elementos en específico
+ */
+
+@import 'non-responsive.css';
+
+/** 1) Los espacios para contar con un menu lateral 
+--------------------------------------------------------------------------------------- **/
+
+/* En caso de habilitar sidebars ocultos, 
+ * se necesita un envoltorio y un botón que ejecute el mostrar y ocultar */
+
+.toggle-sidebars #content{transition:all .4s ease 0s;height:100%;}
+.toggle-sidebars.left-on #content.add-aside-left{padding-left:0px;}
+
+	.toggle-sidebars.left-on #secondary {
+		left: 0px;
+		margin-left: -300px;
+		width: 300px;
+		background: #222;
+		position: fixed;
+		height: 100%;
+		z-index: 1020;
+		transition: all .4s ease 0s;
+		overflow: auto;
+	}
+
+	
+/* División para el contenido, originalmente deberia medir al 100% 
+ * Sin embargo al utilizar bootstrap se puede condicionar el intercambio de clases
+ * col-md-6 a col-md-9
+ * Experimento: manipular el css directo.
+
+
+#page-content-wrapper, 
+.toggle-sidebars #primary {
+	padding-left: 0;
+	margin-left: 0;
+	width: 100%;
+	height: auto;
+}
+ */
+
+.toggle-sidebars.left-on #primary{width:75%;}
+.toggle-sidebars.right-on #primary{width:75%;}
+.toggle-sidebars.right-on.left-on #primary{width:100%;}
+
+
+/* Ajuste en elementos cuando están activos */
+.toggle-sidebars.left-on #content.active-sidebar-left{padding-left:315px;}/*+15 de bootstrap*/
+ .toggle-sidebars.left-on #content.active-sidebar-left #secondary{left:300px;}
+
+/* En caso de requerir otro sidebar a la derecha */
+	
+ .toggle-sidebars.right-on #content.add-aside-right{padding-right:10px;}
+			
+	.toggle-sidebars.right-on #third {
+		margin-right: -80%;
+		right: 0px;
+		width: 80%;
+		background: #ddd;
+		position: fixed;
+		height: 100%;
+		z-index: 1020;
+		transition: all .4s ease 0s;
+		top:0px;
+	}
+		
+	/*Sidebar activado*/
+ .toggle-sidebars.right-on #content.active-sidebar-right{padding-right:80%;}
+ .toggle-sidebars.right-on #content.active-sidebar-right #third{right:80%;}
+	
+
+/* Sidebar en caso de necesitar el menu de bootstrap */
+
+/* División para el menu */
+	
+.sidebar-nav {
+	display: block;
+	float: left;
+	width: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 0px;
+}
+
+.sidebar-nav .navbar-header{float:none;padding:10px;background:#d2d2d2;}
+.sidebar-nav .navbar-brand{width:100%;}
+.sidebar-nav .navbar-collapse{padding-left:0px;padding-right:0px;}
+.sidebar-nav .navbar-collapse.in{overflow-y:visible;}
+.sidebar-nav .navbar-nav{width:100%;margin:0px 0px;}
+.sidebar-nav .navbar-nav > li{float:none;}
+
+.sidebar-nav .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    border: 0;
+    padding: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0px;
+}
+
+.sidebar-nav .navbar-nav .open .dropdown-menu .dropdown-header, 
+.sidebar-nav .navbar-nav .open .dropdown-menu > li > a {	
+	padding: 10px 15px 10px 15px;
+}
+
+.sidebar-nav .dropdown-menu .divider {
+    height: 1px;
+    margin: 1px 0;
+}
+
+/*Botón animado del menu
+ *fuente: http://callmenick.com/post/animating-css-only-hamburger-menu-icons;
+ */
+.c-hamburger{display:block;position:relative;overflow:hidden;margin:0;padding:0;width:96px;height:96px;font-size:0;text-indent:-9999px;appearance:none;box-shadow:none;border-radius:none;border:none;cursor:pointer;transition:background 0.3s;transform: scale(.4);transform-origin: 0px 20px;}
+.c-hamburger:focus{outline:none;}
+.c-hamburger span{display:block;position:absolute;top:44px;left:18px;right:18px;height:8px;background:white;}
+.c-hamburger span::before,.c-hamburger span::after{position:absolute;display:block;left:0;width:100%;height:8px;background-color:#fff;content:"";}
+.c-hamburger span::before{top:-20px;}
+.c-hamburger span::after{bottom:-20px;}
+.c-hamburger--htla{background-color:#000000;}
+.c-hamburger--htla span{transition:transform 0.3s;}
+.c-hamburger--htla span::before{transform-origin:top right;transition:transform 0.3s,width 0.3s,top 0.3s;}
+.c-hamburger--htla span::after{transform-origin:bottom right;transition:transform 0.3s,width 0.3s,bottom 0.3s;}
+
+/* active state,i.e. menu open */
+.c-hamburger--htla.is-active{background-color:#FFFFFF;}
+.c-hamburger--htla.is-active span{transform:rotate(180deg);}
+.c-hamburger--htla.is-active span::before,.c-hamburger--htla.is-active span::after{width:50%;}
+.c-hamburger--htla.is-active span::before{top:0;transform:translateX(38px) translateY(4px) rotate(45deg);}
+.c-hamburger--htla.is-active span::after{bottom:0;transform:translateX(38px) translateY(-4px) rotate(-45deg);}
+
+/*arreglo rápido para abrir o cerrar el menu en combinación con el botón*/
+
+.c-hamburger {position: absolute;right:-95px;top:10px;transition:all 1s ease 0s; z-index: 1000;}
+.c-hamburger.is-active span, .c-hamburger.is-active span::before, .c-hamburger.is-active span::after {background: #000;}
+.toggle-sidebars.left-on #secondary { overflow: unset;}
+.active-sidebar-left .c-hamburger{ right: -60px;}
+.toggle-sidebars.left-on #primary{width:100%;min-width:768px;padding-top:15px;}
+
+
+/** 2) Elementos globales
+--------------------------------------------------------------------------------------- **/
+
+/* Header */
+#templateHeader.navbar-default{border-top:0;border-left:0;border-right:0;border-radius:0px;background-color:#FFFFFF;}
+
+/* Footer */
+.site-footer{color:#000;padding:10px;border-top:1px solid #e7e7e7;}
+
+/** 2b) Elementos en específico.
+--------------------------------------------------------------------------------------- **/
+
+/** personalización de botón de carga de bootstrap 
+ * 	fuente: https://www.abeautifulsite.net/whipping-file-inputs-into-shape-with-bootstrap-3
+ */
+ .btn-file{position:relative;overflow:hidden;}
+ .btn-file input[type=file]{position:absolute;top:0;right:0;min-width:100%;min-height:100%;font-size:100px;text-align:right;filter:alpha(opacity=0);opacity:0;outline:none;background:white;cursor:inherit;display:block;}

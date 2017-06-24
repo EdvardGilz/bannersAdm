@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>PublishingOn</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="css/cms-layout.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="toggle-sidebars left-on ">  	  	
+	<div id="content" class="container-fluid site-content active-sidebar-left">
+<!-- Sidebar -->
+		<div id="secondary">
+			
+			<!-- Complemento: ejecuta la navegación lateral -->
+			<button id="show-sidebar-left" class="c-hamburger c-hamburger--htla is-active">
+			  <span>toggle menu</span>
+			</button>
+
+			<!-- Include: Menu lateral -->
+			<nav id="templateNavigation"  class="navbar navbar-inverse sidebar-nav" role="navigation"><!-- includes-tema/menu.html --></nav>
+
+		</div>
+<!-- FIN Sidebar -->
+
+<!-- Contenedor principal: se ejecutan las tareas de cada item -->
+		<div id="primary">
+
+			<!-- Include: Header -->
+			<nav id="templateHeader" class="navbar navbar-default"><!-- includes-tema/header.html --></nav>						
+
+			<!-- Include: Actividad o tareas -->
+			<div id="templateTasks" class="container-fluid"><!-- includes-tema/*Varios html --></div>						
+
+		</div>		
+<!-- FIN Contenedor principal -->
+		
+		<footer class="site-footer text-right">
+			<small>© <span id="copyDate"></span> BIXNIA, todos los derechos reservados</small>				
+		</footer>
+		
+	</div>
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');</script>    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/cms-layout.js"></script>
+    
+    <script>
+
+	jQuery(document).ready(function($){
+    	/** includes para reducir htmeleo **/
+
+    	// #32 menu
+		  $('#templateNavigation').load('includes-tema/menu.html');	
+    	// #41 header
+		  $('#templateHeader').load('includes-tema/header.html');	
+	  
+    	/* #44 tasks, este cambia por cada item clickelado del navegador
+    	 * 
+    	 * 1) Por default aparece un mensaje.
+    	 */
+    		//Default en blanco
+            //$('#templateTasks').load('includes-tema/dashboard.html');     
+            
+            //Default ocn función de jqueries…      
+            $('#templateTasks').load('includes-tema/taskNvobanner.html', function() {
+                //invoco la funcion para el preview
+                previewBanner();
+                //invoco la funcion para personalizar el boton de carga de archivos de bootstrap
+                btnCargaArchivo();               
+            });         
+
+
+			// 2) Al clic de cada boton en el menu, se ejecuta la actividad.
+            
+            // Nuevo banner
+            $('#templateNavigation').on('click', '#accionNvoBanner', function() {
+                    $('#templateTasks').load('includes-tema/taskNvobanner.html', function() {
+                      previewBanner();
+                      btnCargaArchivo(); 
+                    });         
+            });   
+
+	});
+	
+
+	
+    	
+    </script>    
+  </body>
+</html>
