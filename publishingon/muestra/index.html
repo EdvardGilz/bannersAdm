@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <meta charset="utf-8">
+</head>
+
+<body>
+
+<h1>Muestra de banner</h1>
+
+<!--<form>-->
+    <input type="text" name="id" placeholder="ID" id="id"><br>
+    <input type="submit" value="Mostrar banner" name="submit" id="submit">
+<!--</form>-->
+
+<div id="banner">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#submit').on('click', function() {
+            $("#banner").publishBanner();
+        });
+    });
+
+
+    $.fn.publishBanner = function() {
+        var id = 0;
+        var div = this;
+        
+            id = $('#id').val();
+            if (id != "") {
+                $.getJSON("../admin/api/" + id + ".json", function( data ) {
+                    div.empty();
+                    div.append("<h1>Datos del Banner</h1>");
+                    div.append("<p>Nombre: " + data.nombre + "</p>");
+                    div.append("<p>Campaña: " + data.campania + "</p>");
+                    div.append("<p>Cliente: " + data.cliente + "</p>");
+                    div.append("<p>Proveedores: " + data.proveedores + "</p>");
+                    div.append("<p>Impresiones: " + data.impresiones + "</p>");
+                    div.append("<p>Clicks: " + data.clics + "</p>");
+                    div.append("<p>Fecha de Inicio: " + data.inicioF + "</p>");
+                    div.append("<p>Hora de Inicio: " + data.inicioH + "</p>");
+                    div.append("<p>Fecha Final: " + data.finF + "</p>");
+                    div.append("<p>Hora Final: " + data.finH + "</p>");
+                    div.append("<p>Enlace a: " + data.url + "</p>");
+
+                    var html = "<h3>" + data.titulo + "</h3>" + "<p>" + data.mensaje + "</p>";  
+                    div.append('<div id="previewBanner" style="width:100%;height:90px;background-color:#DDD;"></div>');
+                    $('#previewBanner').wrap( '<a href="'+ data.url +'" target="_blank"></a>' );
+                    $('#previewBanner').html( html );
+                    $('#previewBanner').css({
+                        "color" : data.txtc ,
+                        "background-color" : data.bgc,
+                        "padding" : "5px"
+                    });
+                    $('#previewBanner').css({ 
+                        "width" : data.width,
+                        "height" : data.height
+                    });
+                })
+                  .fail(function() {
+                    div.append("<h2>Error, ID no encontrado</h2>");
+                });
+            }
+    };
+</script>
+</body>
+</html>

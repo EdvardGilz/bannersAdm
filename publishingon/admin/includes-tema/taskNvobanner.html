@@ -2,15 +2,15 @@
 
 <!-- formualrio del editor -->
 
-  <form role="form" action="index.html">
-
+  <!--<form role="form" method="post" action="" enctype="multipart/form-data">-->
+  <!--<form role="form">-->
 	<h3>Crear nuevo banner		 
 		<!-- Guardar o publicar el banner -->
 		<div class="btn-group pull-right" role="group">
             <button type="submit" class="btn btn-default">Detener</button> 
 			<button type="submit" class="btn btn-default">Borrador</button>
             <button type="submit" class="btn btn-info disabled">Modificar</button> 
-			<button type="submit" class="btn btn-success">Publicar / Programar</button> 
+			<button id="publicar" type="submit" class="btn btn-success">Publicar / Programar</button> 
 		</div>
 	</h3>
 
@@ -26,18 +26,21 @@
       <!-- Datos cliente -->
         
       <label>Nombre:</label>
-        <input name="itemBanner" type="text" class="form-control" placeholder="Nombre">
+        <input id="nombreBanner" name="itemBanner" type="text" class="form-control inputData" placeholder="Nombre">
       
       <label>Campaña:</label>
-        <input name="tagCampana" type="text" class="form-control" placeholder="Nombre">
+        <input id="campañaBanner" name="tagCampana" type="text" class="form-control inputData" placeholder="Nombre">
       
       <label>Cliente:</label>      
         <div class="input-group">
-          <input name="tagCliente" type="text" class="form-control" >
+          <input id="clienteBanner" name="tagCliente" type="text" class="form-control inputData" >
           <span class="input-group-btn">
             <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
           </span>
-        </div>  
+        </div>
+
+      <label>Proveedores:</label>
+        <input id="proveedoresBanner" name="proveedores" type="text" class="form-control inputData" placeholder="proveedor1.com, proveedor2.com, ...">
         
       <hr>  
       
@@ -49,7 +52,7 @@
             
           <label>Impresiones:</label>          
           <div class="input-group">
-            <input name="contarImpresion" type="number" class="form-control" placeholder="0">
+            <input id="impresionesBanner" name="contarImpresion" type="number" class="form-control inputData" placeholder="0">
             <span class="input-group-btn">
               <button class="btn btn-info disabled" type="button"><i class="glyphicon glyphicon-refresh"></i> reset</button>
             </span>
@@ -61,7 +64,7 @@
             
           <label>Clics:</label>
           <div class="input-group">
-            <input name="contarClics" type="number" class="form-control" placeholder="0">
+            <input id="clicsBanner" name="contarClics" type="number" class="form-control inputData" placeholder="0">
             <span class="input-group-btn">
               <button class="btn btn-info disabled" type="button"><i class="glyphicon glyphicon-refresh"></i> reset</button>
             </span>
@@ -77,25 +80,25 @@
         <!-- Fecha de publicación -->
         <div class="form-group col-xs-6">
           <label>Inicio campaña:</label>
-          <input name="fechaInicio" type="date" class="form-control" placeholder="DD/MM/AAAA">
+          <input id="inicioFBanner" name="fechaInicio" type="date" class="form-control inputData" placeholder="DD/MM/AAAA">
         </div>
         
         <!-- Hora de inicio -->
         <div class="form-group col-xs-6">
           <label>Hora inicio:</label>
-          <input name="horaFin" type="datetime" class="form-control" placeholder="HH:MM">
+          <input id="inicioHBanner" name="horaInicio" type="datetime" class="form-control inputData" placeholder="HH:MM">
         </div>
         
         <!-- Fin de publicación -->
         <div class="form-group col-xs-6">
           <label>Final campaña:</label>
-          <input name="fechaFin" type="date" class="form-control" placeholder="DD/MM/AAAA">
+          <input id="finFBanner" name="fechaFin" type="date" class="form-control inputData" placeholder="DD/MM/AAAA">
         </div>
         
         <!-- Hora final -->
         <div class="form-group col-xs-6">
           <label>Hora final:</label>
-          <input name="horaFin" type="datetime" class="form-control" placeholder="HH:MM">
+          <input id="finHBanner" name="horaFin" type="datetime" class="form-control inputData" placeholder="HH:MM">
         </div>    
               
             
@@ -204,32 +207,34 @@
             <!-- Url a la que direcciona -->
             <div class="form-group">
               <label>Dirección de enlace:</label>
-              <textarea id="prevUrl" name="itemBannerRedirect" class="form-control">http://www.google.com</textarea>
+              <textarea id="prevUrl" name="itemBannerRedirect" class="form-control inputData">http://www.google.com</textarea>
             </div>
             
             <!-- mensaje a personalizar -->
             <div class="form-group">
-              <label>Mensaje banner personalizado:</label>
-              <textarea id="prevTxt" name="itemBannerText" class="form-control"><h3>¿Qué esperas para comprar?</h3><p>pícale</p></textarea>
+              <label>Titulo:</label>
+              <textarea id="prevTxt1" name="itemBannerTitulo" class="form-control inputData" placeholder="¿Qué esperas para comprar?"></textarea>
+              <label>Mensaje:</label>
+              <textarea id="prevTxt2" name="itemBannerText" class="form-control inputData" placeholder="pícale"></textarea>
             </div>
              
             <div class="row">
             <!-- Color de texto -->
             <div class="form-group col-xs-6">
               <label>Color texto:</label>
-              <input id="prevColor" name="itemBannerColorText"  type="color" class="form-control" value="#21c0c4">
+              <input id="prevColor" name="itemBannerColorText"  type="color" class="form-control  inputData" value="#21c0c4">
             </div>
                 
             <!-- Color de fondo -->
             <div class="form-group col-xs-6">
               <label>Color fondo:</label>
-              <input id="prevBGcolor" name="itemBannerColorBg" type="color" class="form-control">
+              <input id="prevBGcolor" name="itemBannerColorBg" type="color" class="form-control inputData">
             </div>
             </div>
             
-            <div class="form-group">
+            <!--<div class="form-group">
                 <a id="previewAction" href="#previewAction" class="btn btn-warning btn-block">Preview</a>
-            </div>
+            </div>-->
         
     </div><!-- fin columna de edición -->
     
@@ -275,5 +280,5 @@
 
 
     
-  </form>
+  <!--</form>-->
   
